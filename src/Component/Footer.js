@@ -5,8 +5,11 @@ import styled from 'styled-components';
 const StyleFooter = styled.div `
     width: 100vw;
     height: 70px;
-    border: 1px solid black;
-    background-color: yellow;
+    border: 2px solid #6C9477;
+    background-color:#BFDEA0;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
     
 
 `
@@ -18,7 +21,7 @@ render () {
 
   return (
       <StyleFooter>
-          <p>Obrigado</p>
+          <p>Todos os direitos reservados</p>
       </StyleFooter>
     
   )

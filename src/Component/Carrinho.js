@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ContainerCarrinho = styled.div `
-    width: 20vw;
+    width: 20%;
     height: 75vh;
-    background-color: #f7f7f7;
-    border: 1px solid black;
+    background-color: #DEC6A0;
+ 
 
 `
 

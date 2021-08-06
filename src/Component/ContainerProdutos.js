@@ -1,21 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 import Produtos from './Produtos';
-
+import devEsp from  '../img/devEsp.png';
+import aceleradorDePasso from '../img/fogP01.png';
+import met01 from '../img/met01.png'
+import met02 from '../img/met02.png'
+import met03 from '../img/met03.png'
+import met04 from '../img/met04.png'
+import sat01 from '../img/sat01.png'
+import taxi01 from '../img/taxi01.png'
+import taxi02 from '../img/taxi02.png'
+import travel from '../img/travel.png'
+import trufa from  '../img/trufaEsp.png'
+import img05 from '../img/img05.png'
 
 const Container = styled.div`
-    width: 60vh;
-    height: 90%;
-    background-color: rgb(77,77,77);
-    border: 1px solid black;
+    width: 60%;
+    height: 100%;
+    background-color: #98C6A0;
+    
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-items: center;
-    
-    
+    gap: 4px 12px;
+    padding-bottom: 20px;
 
+    
+  
 `
+
 
 
 class ContainerProdutos extends React.Component {
@@ -24,18 +38,66 @@ render () {
 
   return (
       <Container>
-          <Produtos/>
-          <Produtos/>
-          <Produtos/>
-          <Produtos/>
-          <Produtos/>
-          <Produtos/>
-          <Produtos/>
-          <Produtos/>
-          <Produtos/>
-          <Produtos/>
-          <Produtos/>
-          <Produtos/>
+          <Produtos
+              imagem={devEsp}
+              descricao={"Dev Master Senior"}
+              preco={"R$ 750,00/h"}
+        />
+          <Produtos
+          imagem={aceleradorDePasso}
+          descricao={"Acelerador de Passo Espacial"}
+          preco={"R$ 4250,00"}
+          />
+          <Produtos
+          imagem={img05}
+          descricao={"Buscador de Satélite"}
+          preco={"R$ 1500,00"}
+          />
+          <Produtos
+          imagem={met01}
+          descricao={"Meteorito 800 A.C."}
+          preco={"R$ 7000,00"}
+          />
+          <Produtos
+          imagem={met02}
+          descricao={"Meteorito Previsto para 2050"}
+          preco={"Reserva R$ 5000,00"}
+          />
+          <Produtos
+          imagem={met03}
+          descricao={"Meteorito Previsto para 2022"}
+          preco={"R$ 5000,00"}
+          />
+          <Produtos
+          imagem={met04}
+          descricao={"Meteorito de Saturno"}
+          preco={"R$ 1500,00"}
+          />
+          <Produtos
+          imagem={sat01}
+          descricao={"Satélite Usado"}
+          preco={"R$ 150.000,00"}
+          />
+          <Produtos
+          imagem={taxi01}
+          descricao={"Taxi Aéreo Metal"}
+          preco={"R$ 250,00"}
+          />
+          <Produtos
+          imagem={taxi02}
+          descricao={"Quadro Taxi Aéreo"}
+          preco={"R$ 100,00"}
+          />
+          <Produtos
+          imagem={travel}
+          descricao={"Quadro SPACE TRAVEL"}
+          preco={"R$100,00"}
+          />
+          <Produtos
+          imagem={trufa}
+          descricao={"Quadro Trufas Espaciais"}
+          preco={"R$ 100,00"}
+          />
 
 
       </Container>
