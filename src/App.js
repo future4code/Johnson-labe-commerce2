@@ -2,14 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Filtros from './Component/Filtros';
 import Carrinho from './Component/Carrinho';
-import Produtos from './Component/Produtos';
 import ContainerProdutos from './Component/ContainerProdutos';
 import Header from './Component/Header';
 import Footer from './Component/Footer';
 
 
 const MainContainer = styled.div `
-    background-color: gray;
+    background-color:#98C6A0;
     width: 100vw;
     height: 100%;
     display: flex;
@@ -22,6 +21,24 @@ const MainContainer = styled.div `
 
 class App extends React.Component {
 
+state = {
+  valorMinimo: 0,
+  valorMaximo: 200000.00,
+  descricao: ""
+}
+
+alterarValorMin = (valor) => {
+  this.setState({valorMinimo: valor})
+}
+
+alterarValorMax = (valor) => {
+  this.setState({valorMaximo: valor})
+}
+
+alterarDescricao = (valor) => {
+  this.setState({descricao: valor})
+}
+
 render () {
 
   return (
@@ -30,6 +47,7 @@ render () {
       <MainContainer>
         <Filtros />
         <ContainerProdutos />
+        
         <Carrinho />
 
       </MainContainer>

@@ -3,13 +3,33 @@ import styled from 'styled-components';
 
 
 const CardProduto = styled.div `
-    width: 140px;
-    height: 160px;
-    border: 1px solid black;
-    background-color: white;
+    width: 180px;
+    height: 220px;
+    border: 3px solid #6C9477;
+    border-radius: 10px;
+    box-shadow: 1px 2px 4px;
+    background-color: #fff;
     margin-top: 15px;
 
+    p{
+        font-size: 12px;
+        text-align: center;
+        justify-content: center;
+        font-weight: bold;
+        
+
+    }
+    
+    img{
+        width: 150px;
+        height: 130px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
 `
+
+ 
 
 
 class Produtos extends React.Component {
@@ -18,9 +38,11 @@ render () {
 
   return (
       <CardProduto>
-          <p>imagem</p>
-          <p>Descrição</p>
-          <p>Preço</p>
+        <p>{this.props.descricao}</p>
+        <img src={this.props.imagem} />
+          <p>Preço: {this.props.preco}</p>
+        
+          
       </CardProduto>
     
   )
