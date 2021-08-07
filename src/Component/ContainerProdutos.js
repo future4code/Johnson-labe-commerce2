@@ -34,77 +34,18 @@ const Container = styled.div`
 
 class ContainerProdutos extends React.Component {
 
-render () {
-
-  return (
-      <Container>
-          <Produtos
-              imagem={devEsp}
-              descricao={"Dev Master Senior"}
-              preco={"R$ 750,00/h"}
-        />
-          <Produtos
-          imagem={aceleradorDePasso}
-          descricao={"Acelerador de Passo Espacial"}
-          preco={"R$ 4250,00"}
-          />
-          <Produtos
-          imagem={img05}
-          descricao={"Buscador de Satélite"}
-          preco={"R$ 1500,00"}
-          />
-          <Produtos
-          imagem={met01}
-          descricao={"Meteorito 800 A.C."}
-          preco={"R$ 7000,00"}
-          />
-          <Produtos
-          imagem={met02}
-          descricao={"Meteorito Previsto para 2050"}
-          preco={"Reserva R$ 5000,00"}
-          />
-          <Produtos
-          imagem={met03}
-          descricao={"Meteorito Previsto para 2022"}
-          preco={"R$ 5000,00"}
-          />
-          <Produtos
-          imagem={met04}
-          descricao={"Meteorito de Saturno"}
-          preco={"R$ 1500,00"}
-          />
-          <Produtos
-          imagem={sat01}
-          descricao={"Satélite Usado"}
-          preco={"R$ 150.000,00"}
-          />
-          <Produtos
-          imagem={taxi01}
-          descricao={"Taxi Aéreo Metal"}
-          preco={"R$ 250,00"}
-          />
-          <Produtos
-          imagem={taxi02}
-          descricao={"Quadro Taxi Aéreo"}
-          preco={"R$ 100,00"}
-          />
-          <Produtos
-          imagem={travel}
-          descricao={"Quadro SPACE TRAVEL"}
-          preco={"R$100,00"}
-          />
-          <Produtos
-          imagem={trufa}
-          descricao={"Quadro Trufas Espaciais"}
-          preco={"R$ 100,00"}
-          />
-
-
-      </Container>
+    render () {
     
-  )
-}
-
-}
-
-export default ContainerProdutos;
+      return (
+          <Container>
+              <Produtos />
+          
+    
+          </Container>
+        
+      )
+    }
+    
+    }
+    
+    export default ContainerProdutos;

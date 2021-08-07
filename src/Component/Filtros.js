@@ -6,7 +6,7 @@ const ContainerFiltros = styled.div `
     width: 20%;
     height: 75vh;
     background-color: #DEC6A0;
-      display: flex;
+    display: flex;
     align-items: center;
     flex-direction: column;
    
