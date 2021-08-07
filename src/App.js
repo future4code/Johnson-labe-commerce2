@@ -25,6 +25,7 @@ state = {
   valorMinimo: 0,
   valorMaximo: 200000.00,
   descricao: ""
+  
 }
 
 alterarValorMin = (valor) => {
@@ -37,6 +38,10 @@ alterarValorMax = (valor) => {
 
 alterarDescricao = (valor) => {
   this.setState({descricao: valor})
+}
+
+onClickProduto = () =>{
+
 }
 
 render () {
