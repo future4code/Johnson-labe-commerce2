@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Filtros from './Component/Filtros';
+import {Filtros} from './Component/Filtros';
 import Carrinho from './Component/Carrinho';
 import ContainerProdutos from './Component/ContainerProdutos';
 import Header from './Component/Header';
@@ -8,8 +8,8 @@ import Footer from './Component/Footer';
 
 
 const MainContainer = styled.div `
-    background-color:#98C6A0;
-    width: 100vw;
+    background-color: #F5D5E0;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;

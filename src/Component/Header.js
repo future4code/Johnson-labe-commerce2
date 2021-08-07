@@ -5,11 +5,11 @@ import logo from '../img/LABCOMMERCE.png'
 
 
 const Topo = styled.div `
-    width: 100vw;
-    height: 70px;
-    border: 2px solid #6C9477;
+    width: 99.7%;
+    height: 80px;
+    border: 2px solid #210535;
     box-shadow: 1px 1px 1px;
-    background-color:#BFDEA0;
+    background-color:#C874B2;
     overflow: auto;
     
     

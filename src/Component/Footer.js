@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 
 const StyleFooter = styled.div `
-    width: 100vw;
+    width: 99.7%;
     height: 70px;
-    border: 2px solid #6C9477;
-    background-color:#BFDEA0;
+    border: 2px solid #210535;
+    background-color:#C874B2;
     text-align: center;
     align-items: center;
     font-weight: bold;

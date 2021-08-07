@@ -2,53 +2,54 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const ContainerFiltros = styled.div `
-    width: 20%;
-    height: 75vh;
-    background-color: #DEC6A0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-   
-    
-
-    
-`
-const InputFiltros = styled.input `
-    width: 70%;
-    height: 5%;
-    
-
-   `
-
-class Filtros extends React.Component {
-
-render () {
-
-  return (
-    <ContainerFiltros>
-      <h2> Filtro </h2>
-      <h4> Valor Mínimo:</h4>
-        <InputFiltros
-        value={this.props.valorMinimo}
-        onChange={this.props.alterarValorMin}/>
-    
-      <h4> Valor Máximo:</h4>
-        <InputFiltros
-        value={this.props.valorMaximo}
-        onChange={this.props.alterarValorMax}/>      
-
-      <h4> Nome do Produto:</h4>
-        <InputFiltros
-        value={this.props.descricao}
-        onChange={this.props.alterarDescricao}
-        /> 
-
+const ContainerFiltros = styled.div`
+  
+  background-color: #F5D5E0;
+  padding-left: 12px;
+  width: 15%;
       
-    </ContainerFiltros>
-  )
-}
+`
+const InputFiltros = styled.div`
+  display: grid;
+  gap: 12px;
+ `
+export class Filtros extends React.Component {
+
+  render() {
+
+    return (
+      <ContainerFiltros>
+        <h3> Filtro </h3>
+        <InputFiltros>
+          <div>
+            <label>
+              Valor Mínimo:
+              <input
+                value={this.props.valorMinimo}
+                onChange={this.props.alterarValorMin} />
+            </label>
+          </div>
+          <div>
+            <label>
+              Valor Máximo:
+              <input
+                value={this.props.valorMaximo}
+                onChange={this.props.alterarValorMax} />
+            </label>
+          </div>
+          <div>
+            <label>
+              Nome do Produto:
+              <input
+                value={this.props.descricao}
+                onChange={this.props.alterarDescricao} />
+            </label>
+          </div>
+        </InputFiltros>
+
+      </ContainerFiltros>
+    )
+  }
 
 }
 
-export default Filtros;

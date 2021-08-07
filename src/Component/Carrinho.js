@@ -4,12 +4,11 @@ import ContainerProdutos from './ContainerProdutos';
 
 const ContainerCarrinho = styled.div `
     width: 20%;
-    height: 75vh;
-    background-color: #DEC6A0;
+    background-color: #F5D5E0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    
 
     h3{
         font-size: 1em;
@@ -19,8 +18,7 @@ const ContainerCarrinho = styled.div `
         border-radius: 25px;
         border: 1px solid black;
         margin-top: 35px;
-
-        
+                
 
     }
  

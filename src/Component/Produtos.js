@@ -2,107 +2,147 @@ import React from 'react';
 import styled from 'styled-components';
 
 
+
 const CardProduto = styled.div `
+
+
     width: 180px;
-    height: 240px;
-    border: 3px solid #6C9477;
+    border: 3px solid #430D4B;
     border-radius: 10px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0,.8);
     background-color: #fff;
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
+    
+      
 
-
+ 
     p{
         font-size: 12px;
         text-align: center;
-        justify-content: center;
         font-weight: bold;
         
 
     }
     
     img{
+        margin: auto;
         width: 150px;
-        height: 130px;
-        margin-left: 15px;
-        margin-right: 15px;
-        border:1px solid black;
+        border: 1px solid #430D4B;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0,.6)
-    }
+    } 
 
 `
+
+const ProdutosGrid = styled.div`
+
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    background-color: #F5D5E0;  
+    margin-bottom: 16px;
+
+    
+
+`
+
+
 const BotaoAdicionar = styled.button `
     text-align: center;
     color: black;
     background-color: #b09db9;
     width: 150px;
     border-radius: 25px;
+    margin-bottom: 8px;
 `
  
 
 const estoque = [
     {
         id: 1,
-        imagem:  "https://picsum.photos/200/201",
+        imagem: "/img/devEsp.png",
         descricao: "Dev Master Senior",
         preco: 750.00
     },
     {
         id: 2,
-        imagem:  "https://picsum.photos/200/199",
-        descricao: "Quadro Foguete",
-        preco: 100.00
+        imagem:  "/img/fogP01.png",
+        descricao: "Acelerador de Passos",
+        preco: 1000.00
     },
     {
         id: 3,
-        imagem:  "https://picsum.photos/200/198",
+        imagem:  "/img/img05.png",
         descricao: "Buscador de Satélite",
         preco: 450.00
     },
     {
         id: 4,
-        imagem:  "https://picsum.photos/200/197",
-        descricao: "Meteoro 01",
+        imagem:  "/img/met01.png",
+        descricao: "Lixo espacial 1993",
         preco: 130.00
     },
     {
         id: 5,
-        imagem:  "https://picsum.photos/200/196",
-        descricao: "Meteoro 02",
-        preco: 300.00
+        imagem:  "/img/met02.png",
+        descricao: "Meteoro previsto para 2025",
+        preco: 3000.00
     },
     {
         id: 6,
-        imagem:  "https://picsum.photos/200/195",
-        descricao: "Meteoro 03",
-        preco: 450.00
+        imagem:  "/img/met03.png",
+        descricao: "Meteoro previsto para 2030",
+        preco: 4500.00
     },
     {
         id: 7,
-        imagem:  "https://picsum.photos/200/194",
-        descricao: "Meteoro 04",
+        imagem:  "/img/met04.png",
+        descricao: "Kripton - 1850 D.C.",
         preco: 500.00
     },
     {
         id: 8,
-        imagem:  "https://picsum.photos/200/193",
-        descricao: "Satélite Usado",
+        imagem:  "/img/taxi01.png",
+        descricao: "Quadro decorativo",
+        preco: 150.00
+    },
+    {
+        id: 9,
+        imagem:  "/img/taxi02.png",
+        descricao: "Quadro decorativo",
+        preco: 150.00
+    },
+    {
+        id: 10,
+        imagem:  "/img/travel.png",
+        descricao: "Passagens para Marte",
         preco: 15000.00
+    },{
+        id: 11,
+        imagem:  "/img/trufaEsp.png",
+        descricao: "Trufas Espaciais",
+        preco: 80.00
+    },{
+        id: 12,
+        imagem:  "/img/sat01.png",
+        descricao: "Satélite semi novo",
+        preco: 250000.00
     }
+    
     
 
 ]
  
 const listaProdutos = estoque.map((produto, indice) => {
     return (
+        <CardProduto>
         <div key = {indice}>
             <p>{produto.descricao}</p>
             <img src={produto.imagem} />
             <p>Preço: {produto.preco}</p>
+            <BotaoAdicionar>Adicionar ao Carrinho</BotaoAdicionar>
         </div>
+        </CardProduto>
     )
 
 })
@@ -113,14 +153,12 @@ class Produtos extends React.Component {
 render () {
 
   return (
-    
-      <CardProduto>
-        <p>{this.props.descricao}</p>
-        <img src={this.props.imagem} />
-          <p>Preço: {this.props.preco}</p>
-          <BotaoAdicionar>Adicionar ao Carrinho</BotaoAdicionar>
+      <ProdutosGrid>
+          
+          {listaProdutos}
         
-      </CardProduto>
+    
+    </ProdutosGrid>
     
     
   )
