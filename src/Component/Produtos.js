@@ -14,6 +14,7 @@ const CardProduto = styled.div `
     flex-direction: column;
     align-items: center;
 
+
     p{
         font-size: 12px;
         text-align: center;
@@ -42,20 +43,85 @@ const BotaoAdicionar = styled.button `
 `
  
 
+const estoque = [
+    {
+        id: 1,
+        imagem:  "https://picsum.photos/200/201",
+        descricao: "Dev Master Senior",
+        preco: 750.00
+    },
+    {
+        id: 2,
+        imagem:  "https://picsum.photos/200/199",
+        descricao: "Quadro Foguete",
+        preco: 100.00
+    },
+    {
+        id: 3,
+        imagem:  "https://picsum.photos/200/198",
+        descricao: "Buscador de Satélite",
+        preco: 450.00
+    },
+    {
+        id: 4,
+        imagem:  "https://picsum.photos/200/197",
+        descricao: "Meteoro 01",
+        preco: 130.00
+    },
+    {
+        id: 5,
+        imagem:  "https://picsum.photos/200/196",
+        descricao: "Meteoro 02",
+        preco: 300.00
+    },
+    {
+        id: 6,
+        imagem:  "https://picsum.photos/200/195",
+        descricao: "Meteoro 03",
+        preco: 450.00
+    },
+    {
+        id: 7,
+        imagem:  "https://picsum.photos/200/194",
+        descricao: "Meteoro 04",
+        preco: 500.00
+    },
+    {
+        id: 8,
+        imagem:  "https://picsum.photos/200/193",
+        descricao: "Satélite Usado",
+        preco: 15000.00
+    }
+    
+
+]
+ 
+const listaProdutos = estoque.map((produto, indice) => {
+    return (
+        <div key = {indice}>
+            <p>{produto.descricao}</p>
+            <img src={produto.imagem} />
+            <p>Preço: {produto.preco}</p>
+        </div>
+    )
+
+})
+
 
 class Produtos extends React.Component {
 
 render () {
 
   return (
+    
       <CardProduto>
         <p>{this.props.descricao}</p>
         <img src={this.props.imagem} />
           <p>Preço: {this.props.preco}</p>
           <BotaoAdicionar>Adicionar ao Carrinho</BotaoAdicionar>
         
-          
       </CardProduto>
+    
     
   )
 }
