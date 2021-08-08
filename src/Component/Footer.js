@@ -11,6 +11,7 @@ const StyleFooter = styled.div `
     align-items: center;
     font-weight: bold;
     
+    
 
 `
 
