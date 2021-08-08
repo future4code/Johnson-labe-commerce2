@@ -9,7 +9,8 @@ const Topo = styled.div `
     height: 80px;
     border: 2px solid #210535;
     box-shadow: 1px 1px 1px;
-    background-color:#C874B2;
+    /* background-color:#C874B2; */
+    background-color: #444;
     overflow: auto;
     
     
@@ -19,6 +20,7 @@ const Topo = styled.div `
       
       height: 60px;
       padding: 8px;
+      
     }
 
 `
@@ -32,7 +34,7 @@ render () {
   return (
       <Topo>
         
-              <img src={logo} />
+              <img src={logo} alt="logo" />
 
 
           

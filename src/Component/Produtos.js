@@ -133,36 +133,50 @@ const estoque = [
 
 ]
  
-const listaProdutos = estoque.map((produto, indice) => {
-    return (
-        <CardProduto>
-        <div key = {indice}>
-            <p>{produto.descricao}</p>
-            <img src={produto.imagem} />
-            <p>Preço: {produto.preco}</p>
-            <BotaoAdicionar>Adicionar ao Carrinho</BotaoAdicionar>
-        </div>
-        </CardProduto>
-    )
+const Container = styled.div`
+    width: 100%;
+    height: 100%;
+    background-color: #F5D5E0;
+    padding-left: 26px;
+    
+  
+`
 
-})
+
 
 
 class Produtos extends React.Component {
-
-render () {
-
-  return (
-      <ProdutosGrid>
-          
-          {listaProdutos}
+    
+    listaProdutos = () => estoque.map((produto, indice) => {
+        return (
+            <CardProduto key="CardProduto">
+                <div key={indice}>
+                    <p>{produto.descricao}</p>
+                    <img src={produto.imagem} alt={produto.descricao}/>
+                    <p>Preço: {produto.preco}</p>
+                    <BotaoAdicionar onClick={() => this.props.onClickProduto(produto)}>Adicionar ao Carrinho</BotaoAdicionar>
+                </div>
+            </CardProduto>
+        )
         
+    })
     
-    </ProdutosGrid>
-    
-    
-  )
-}
+    render() {
+        
+        return (
+            <Container>
+                <ProdutosGrid>
+
+
+                    {this.listaProdutos()}
+
+
+                </ProdutosGrid>
+            </Container>
+
+
+        )
+    }
 
 }
 

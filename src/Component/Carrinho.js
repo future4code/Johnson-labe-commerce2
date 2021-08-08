@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ContainerProdutos from './ContainerProdutos';
+
 
 const ContainerCarrinho = styled.div `
     width: 20%;
@@ -52,18 +52,12 @@ render () {
       <ContainerCarrinho>
           <h3> Carrinho</h3>
           <ContainerSelecao>
-              <div>
-                  <p>3x  produto</p>
-              </div>
-              <div>
-                  <p>2x Produto</p>
-              </div>
-              <div>
-                  <p>2x Produto</p>
-              </div>
-              <div>
-                  <p>2x Produto</p>
-              </div>
+              {this.props.conteudo.map((produto) => (
+               <div>
+                   <div> {produto.count} : {produto.descricao} <button onClick={() => this.props.onClickDelete(produto.id)}>X</button> </div>
+                   
+               </div>   
+              ))}
           </ContainerSelecao>
 
         <ContainerBotao>
