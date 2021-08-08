@@ -1,25 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../img/LABCOMMERCE.png'
+import logo from '../img/LABCOMMERCE.png';
+import img from '../img/Banner.jpg'
 
 
 
-const Topo = styled.div `
-    width: 99.7%;
-    height: 80px;
-    border: 2px solid #210535;
+const Topo = styled.div`
+    width: 100%;
+    height: 90px;
+    border: 2px solid #7B337D;
     box-shadow: 1px 1px 1px;
-    /* background-color:#C874B2; */
-    background-color: #444;
+    background-color:#444;
     overflow: auto;
+    background-image: url(${img});
+    
     
     
     
     
     img{
       
-      height: 60px;
-      padding: 8px;
+      height: 85px;
+      padding-left: 40px;
+      background-color:rgba(1,1,1,.6);
       
     }
 
@@ -29,20 +32,20 @@ const Topo = styled.div `
 
 class Header extends React.Component {
 
-render () {
+  render() {
 
-  return (
+    return (
       <Topo>
-        
-              <img src={logo} alt="logo" />
+
+        <img src={logo} alt="logo" />
 
 
-          
-          
+
+
       </Topo>
-    
-  )
-}
+
+    )
+  }
 
 }
 

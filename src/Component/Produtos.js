@@ -3,26 +3,22 @@ import styled from 'styled-components';
 
 
 
-const CardProduto = styled.div `
+const CardProduto = styled.div`
 
 
-    width: 180px;
+    width: 190px;
     border: 3px solid #430D4B;
     border-radius: 10px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0,.8);
-    background-color: #fff;
+    background-color: #F5D5E0;
     text-align: center;
+    color: #7B337D;
     
-      
-
- 
     p{
-        font-size: 12px;
+        font-size: 13px;
         text-align: center;
         font-weight: bold;
-        
-
-    }
+       }
     
     img{
         margin: auto;
@@ -32,6 +28,11 @@ const CardProduto = styled.div `
     } 
 
 `
+const Titulo = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 24px;
+`
 
 const ProdutosGrid = styled.div`
 
@@ -39,23 +40,26 @@ const ProdutosGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
-    background-color: #F5D5E0;  
+    background-color: #210535;  
     margin-bottom: 16px;
+    
 
     
 
 `
 
 
-const BotaoAdicionar = styled.button `
+const BotaoAdicionar = styled.button`
     text-align: center;
-    color: black;
+    color: #7B337D;
     background-color: #b09db9;
     width: 150px;
     border-radius: 25px;
     margin-bottom: 8px;
+    border: 1px solid #210535;
+    cursor: pointer;
 `
- 
+
 
 const estoque = [
     {
@@ -66,79 +70,79 @@ const estoque = [
     },
     {
         id: 2,
-        imagem:  "/img/fogP01.png",
+        imagem: "/img/fogP01.png",
         descricao: "Acelerador de Passos",
         preco: 1000.00
     },
     {
         id: 3,
-        imagem:  "/img/img05.png",
+        imagem: "/img/img05.png",
         descricao: "Buscador de Satélite",
         preco: 450.00
     },
     {
         id: 4,
-        imagem:  "/img/met01.png",
+        imagem: "/img/met01.png",
         descricao: "Lixo espacial 1993",
         preco: 130.00
     },
     {
         id: 5,
-        imagem:  "/img/met02.png",
+        imagem: "/img/met02.png",
         descricao: "Meteoro previsto para 2025",
         preco: 3000.00
     },
     {
         id: 6,
-        imagem:  "/img/met03.png",
+        imagem: "/img/met03.png",
         descricao: "Meteoro previsto para 2030",
         preco: 4500.00
     },
     {
         id: 7,
-        imagem:  "/img/met04.png",
+        imagem: "/img/met04.png",
         descricao: "Kripton - 1850 D.C.",
         preco: 500.00
     },
     {
         id: 8,
-        imagem:  "/img/taxi01.png",
+        imagem: "/img/taxi01.png",
         descricao: "Quadro decorativo",
         preco: 150.00
     },
     {
         id: 9,
-        imagem:  "/img/taxi02.png",
+        imagem: "/img/taxi02.png",
         descricao: "Quadro decorativo",
         preco: 150.00
     },
     {
         id: 10,
-        imagem:  "/img/travel.png",
+        imagem: "/img/travel.png",
         descricao: "Passagens para Marte",
         preco: 15000.00
-    },{
+    }, {
         id: 11,
-        imagem:  "/img/trufaEsp.png",
+        imagem: "/img/trufaEsp.png",
         descricao: "Trufas Espaciais",
         preco: 80.00
-    },{
+    }, {
         id: 12,
-        imagem:  "/img/sat01.png",
+        imagem: "/img/sat01.png",
         descricao: "Satélite semi novo",
         preco: 250000.00
     }
-    
-    
+
+
 
 ]
- 
+
 const Container = styled.div`
     width: 100%;
     height: 100%;
-    background-color: #F5D5E0;
+    background-color: #210535;
     padding-left: 26px;
-    
+    color: #F5D5E0;
   
 `
 
@@ -146,25 +150,35 @@ const Container = styled.div`
 
 
 class Produtos extends React.Component {
-    
+
     listaProdutos = () => estoque.map((produto, indice) => {
         return (
             <CardProduto key="CardProduto">
                 <div key={indice}>
                     <p>{produto.descricao}</p>
-                    <img src={produto.imagem} alt={produto.descricao}/>
+                    <img src={produto.imagem} alt={produto.descricao} />
                     <p>Preço: {produto.preco}</p>
                     <BotaoAdicionar onClick={() => this.props.onClickProduto(produto)}>Adicionar ao Carrinho</BotaoAdicionar>
                 </div>
             </CardProduto>
         )
-        
+
     })
-    
+
     render() {
-        
+
         return (
             <Container>
+                <Titulo>
+                    <h4>Quantidade de Produtos:{estoque.length}</h4>
+                    <h4>Ordem:
+                        <select>
+                            <option value="0"></option>
+                            <option value="Crescente">Crescente</option>
+                            <option value="Decrescente">Decrescente</option>
+                        </select>
+                    </h4>
+                </Titulo>
                 <ProdutosGrid>
 
 

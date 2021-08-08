@@ -2,72 +2,103 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const ContainerCarrinho = styled.div `
+const ContainerCarrinho = styled.div`
     width: 20%;
-    background-color: #F5D5E0;
+    background-color: #430D4B;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    border-left: 1px solid #7B337D;
+    justify-content: space-between;
+    padding: 0 12px;
+    `
 
-    h3{
-        font-size: 1em;
-        text-align: center;
-        background-color: #b09db9;
-        padding: 5px 25px;
-        border-radius: 25px;
-        border: 1px solid black;
-        margin-top: 35px;
+const TituloCarrinho = styled.div`
+        margin-top: 24px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid #7B337D;
+  letter-spacing:2px;
+  font-weight: bold;
+  padding-bottom: 16px;
+  color: #F5D5E0;
                 
 
-    }
+  `
  
 
-`
+
 const ContainerSelecao = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     
     `
-const ContainerBotao = styled.div`
-    display: flex;
-    flex-direction: column;
-    
-    `
-    const BotaoCarrinho = styled.button `
+
+
+const BotaoCarrinho = styled.button`
         text-align: center;
-        color: black;
+        color: #430D4B;
         background-color: #b09db9;
         width: 150px;
         border-radius: 25px;
         padding: 5px;
-        margin: 10px;
+        margin-bottom: 250px;
+        border:1px solid #210535;
+        cursor: pointer;
+    `
+const ListaProdutos = styled.div`
+        background-color: #210535; 
+        color:#F5D5E0;
+        border:1px solid #F5D5E0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin:8px;
+        width: 99%;
+        font-size: 16px;
+
+    `
+const Produto = styled.div`
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    `
+const BotaoExcluir = styled.button`
+        background-color: #F5D5E0;
+        color: #210535;
+        border-radius: 50%;
+        border:none;
+        cursor: pointer;
+    
     `
 class Carrinho extends React.Component {
 
-render () {
+    render() {
 
-  return (
-      <ContainerCarrinho>
-          <h3> Carrinho</h3>
-          <ContainerSelecao>
-              {this.props.conteudo.map((produto) => (
-               <div>
-                   <div> {produto.count} : {produto.descricao} <button onClick={() => this.props.onClickDelete(produto.id)}>X</button> </div>
-                   
-               </div>   
-              ))}
-          </ContainerSelecao>
+        return (
+            <ContainerCarrinho>
+                <TituloCarrinho> Carrinho</TituloCarrinho>
+                <ContainerSelecao>
+                    {this.props.conteudo.map((produto) => (
+                        <ListaProdutos>
+                            <div>
+                                <Produto>{produto.count} X {produto.descricao}  <BotaoExcluir onClick={() => this.props.onClickDelete(produto.id)}>X</BotaoExcluir></Produto>
+                                <div>R$ {produto.preco}</div>
+                            </div>
 
-        <ContainerBotao>
-        <BotaoCarrinho>Limpar Carrinho</BotaoCarrinho>
-        <BotaoCarrinho >Finalizar Compra</BotaoCarrinho>
-        </ContainerBotao>
-      
-    </ContainerCarrinho>
-  )
-}
+                        </ListaProdutos>
+                    ))}
+                </ContainerSelecao>
+
+
+                <BotaoCarrinho >Finalizar Compra</BotaoCarrinho>
+
+
+            </ContainerCarrinho>
+        )
+    }
 
 }
 
