@@ -14,7 +14,7 @@ const ContainerCarrinho = styled.div`
     `
 
 const TituloCarrinho = styled.div`
-        margin-top: 24px;
+  margin-top: 24px;
   width: 100%;
   text-align: center;
   border-bottom: 2px solid #7B337D;
@@ -43,7 +43,7 @@ const BotaoCarrinho = styled.button`
         width: 150px;
         border-radius: 25px;
         padding: 5px;
-        margin-bottom: 250px;
+        margin-bottom: 200px;
         border:1px solid #210535;
         cursor: pointer;
     `
@@ -73,6 +73,23 @@ const BotaoExcluir = styled.button`
         cursor: pointer;
     
     `
+const Preco = styled.div`
+display:flex;
+justify-content: space-evenly;
+align-items: center;
+`
+const Total = styled.div`
+    margin-top: 24px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid #7B337D;
+  border-top: 2px solid #7B337D;
+  letter-spacing:2px;
+  font-weight: bold;
+  padding:16px 0;
+  color: #F5D5E0;
+`
+
 class Carrinho extends React.Component {
 
     render() {
@@ -84,15 +101,16 @@ class Carrinho extends React.Component {
                     {this.props.conteudo.map((produto) => (
                         <ListaProdutos>
                             <div>
-                                <Produto>{produto.count} X {produto.descricao}  <BotaoExcluir onClick={() => this.props.onClickDelete(produto.id)}>X</BotaoExcluir></Produto>
-                                <div>R$ {produto.preco}</div>
+                                
+                                <Produto>{produto.count} X {produto.descricao} </Produto>
+                                <Preco>R$ {produto.preco} <BotaoExcluir onClick={() => this.props.onClickDelete(produto.id)}>X</BotaoExcluir></Preco> 
                             </div>
 
                         </ListaProdutos>
                     ))}
                 </ContainerSelecao>
 
-
+                        <Total>Total: R$ {this.props.valorCarrinho()},00</Total>
                 <BotaoCarrinho >Finalizar Compra</BotaoCarrinho>
 
 
