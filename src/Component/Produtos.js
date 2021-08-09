@@ -174,8 +174,8 @@ class Produtos extends React.Component {
                     <h4>Ordem:
                         <select>
                             <option value="0"></option>
-                            <option value="Crescente">Crescente</option>
-                            <option value="Decrescente">Decrescente</option>
+                            <option onClick={this.props.ordernaCrescente}>Crescente</option>
+                            <option onClick={this.props.ordernaDecrescente}>Decrescente</option>
                         </select>
                     </h4>
                 </Titulo>
