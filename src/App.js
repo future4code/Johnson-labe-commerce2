@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Filtros} from './Component/Filtros';
+import Filtros from './Component/Filtros';
 import Carrinho from './Component/Carrinho';
 import Produtos from './Component/Produtos';
 import Header from './Component/Header';
@@ -23,10 +23,12 @@ const MainContainer = styled.div`
 class App extends React.Component {
 
   state = {
+    produtos: this.props.estoque,
     valorMinimo: 0,
     valorMaximo: 200000.00,
     descricao: "",
-    conteudoCarrinho: []
+    conteudoCarrinho: [],
+    decrescente: ""
 
   }
 
@@ -81,6 +83,60 @@ class App extends React.Component {
     }
     this.setState({ conteudoCarrinho: novoArray })
   }
+  onChangeValor = (event) => {
+    const valorProduto = event.target.value;
+    const filtroValores = this.props.estoque.filter(
+      (valor) => valor.preco <= valorProduto && valor.preco >= this.state.valorMinimo
+    );
+    this.setState({
+      valorMaximo: valorProduto,
+      produtos: valorProduto > 0 ? filtroValores : this.props.estoque,
+    });
+  };
+
+  
+  onChangeDecrescente = (event) => {
+    this.setState({ decrescente: event.target.value });
+  };
+
+  OnChangeNomeProduto = (event) => {
+    const nomeProduto = event.target.value;
+   
+    const produtosFiltrados = this.props.estoque.filter((produto) =>
+      produto.nome.toLocaleLowerCase().includes(nomeProduto.toLocaleLowerCase())
+    );
+    this.setState({
+      descricao: nomeProduto,
+      produtos: produtosFiltrados,
+    });
+
+  };
+
+  ordenaCrescente() {
+    this.state.produtos.sort((a, b) => {
+      if (a.preco > b.preco) {
+        return 1;
+      }
+      if (a.preco < b.preco) {
+        return -1;
+      }
+      
+      return 0;
+    });
+  }
+
+  ordenaDecrescente() {
+    this.state.produtos.sort((a, b) => {
+      if (a.preco < b.preco) {
+        return 1;
+      }
+      if (a.preco > b.preco) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+  }
 
   valorCarrinho = () => {
     let valorTotal = 0
@@ -99,7 +155,13 @@ class App extends React.Component {
       <div>
         <Header />
         <MainContainer>
-          <Filtros />
+          <Filtros
+          valorMinimo={this.state.alterarValorMin}
+          valorMaximo={this.state.alterarValorMax}
+          nomeProduto={this.state.alterarDescricao}
+          onChangeValor={this.onChangeValor}
+          OnChangeNomeProduto={this.OnChangeNomeProduto}
+        />
           <Produtos onClickProduto={this.onClickAdicionarCarrinho} />
 
           <Carrinho conteudo={this.state.conteudoCarrinho} onClickDelete={this.onClickDelete} valorCarrinho={this.valorCarrinho}/>

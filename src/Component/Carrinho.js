@@ -73,6 +73,7 @@ const BotaoExcluir = styled.button`
         cursor: pointer;
     
     `
+
 const Preco = styled.div`
 display:flex;
 justify-content: space-evenly;
@@ -89,6 +90,7 @@ const Total = styled.div`
   padding:16px 0;
   color: #F5D5E0;
 `
+
 
 class Carrinho extends React.Component {
 
@@ -108,7 +110,8 @@ class Carrinho extends React.Component {
 
                         </ListaProdutos>
                     ))}
-                </ContainerSelecao>
+                </ContainerSelecao> 
+                
 
                         <Total>Total: R$ {this.props.valorCarrinho()},00</Total>
                 <BotaoCarrinho >Finalizar Compra</BotaoCarrinho>

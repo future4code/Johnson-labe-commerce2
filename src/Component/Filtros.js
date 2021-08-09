@@ -38,7 +38,7 @@ const InputStyled = styled.input`
   margin:12px 8px;
   
  `
-export class Filtros extends React.Component {
+class Filtros extends React.Component {
 
   render() {
 
@@ -78,3 +78,4 @@ export class Filtros extends React.Component {
 
 }
 
+export default Filtros
