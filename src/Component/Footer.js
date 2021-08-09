@@ -11,10 +11,7 @@ const StyleFooter = styled.div`
     align-items: center;
     font-weight: bold;
     color: #F5D5E0;
-    font-size: 16px;
-    
-    
-
+    font-size: 16px; 
 `
 
 
@@ -25,7 +22,7 @@ class Footer extends React.Component {
         return (
             <StyleFooter>
                 <p>Todos os direitos reservados &copy; </p>
-                <p>João Ferrão, Hernan Barrientos, Fernanda Bittencourt</p>
+                <p>João Ferrão, Hernan Barrientos</p>
             </StyleFooter>
 
         )
