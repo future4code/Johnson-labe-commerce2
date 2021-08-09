@@ -14,7 +14,7 @@ const ContainerCarrinho = styled.div`
     `
 
 const TituloCarrinho = styled.div`
-        margin-top: 24px;
+    margin-top: 24px;
   width: 100%;
   text-align: center;
   border-bottom: 2px solid #7B337D;
@@ -73,6 +73,7 @@ const BotaoExcluir = styled.button`
         cursor: pointer;
     
     `
+
 class Carrinho extends React.Component {
 
     render() {
@@ -90,7 +91,8 @@ class Carrinho extends React.Component {
 
                         </ListaProdutos>
                     ))}
-                </ContainerSelecao>
+                </ContainerSelecao> 
+                
 
 
                 <BotaoCarrinho >Finalizar Compra</BotaoCarrinho>

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const StyleFooter = styled.div`
     width: 100%;
-    height: 70px;
+    height: 80px;
     border: 2px solid #210535;
     background-color: #7B337D;
     text-align: center;
