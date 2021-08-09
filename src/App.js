@@ -138,6 +138,17 @@ class App extends React.Component {
     });
   }
 
+  valorCarrinho = () => {
+    let valorTotal = 0
+    this.state.conteudoCarrinho.map((produto) => valorTotal =valorTotal + (produto.preco * produto.count))
+      return valorTotal
+    
+  }
+
+
+
+
+
   render() {
 
     return (
@@ -153,7 +164,7 @@ class App extends React.Component {
         />
           <Produtos onClickProduto={this.onClickAdicionarCarrinho} />
 
-          <Carrinho conteudo={this.state.conteudoCarrinho} onClickDelete={this.onClickDelete} />
+          <Carrinho conteudo={this.state.conteudoCarrinho} onClickDelete={this.onClickDelete} valorCarrinho={this.valorCarrinho}/>
 
         </MainContainer>
         <Footer />
