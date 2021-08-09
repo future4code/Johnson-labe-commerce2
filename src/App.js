@@ -28,8 +28,7 @@ class App extends React.Component {
     valorMaximo: 200000.00,
     descricao: "",
     conteudoCarrinho: [],
-    decrescente: ""
-
+    carrinhoFinalizado: false
   }
 
   alterarValorMin = (valor) => {
@@ -66,23 +65,31 @@ class App extends React.Component {
 
 
   }
-  onClickDelete = (id) => {
-    const deletar = this.state.conteudoCarrinho.find((item) => item.id === id)
-    let novoArray = []
-    if (deletar.count > 1) {
-      novoArray = this.state.conteudoCarrinho.map((item) => {
-        if (item.id === id) {
-          return { ...item, count: item.count - 1 }
-        } else {
-          return item
-        }
-      })
+  onClickDelete = (id, count) => {
+    if (count > 1) {
+      this.subtrairItemDoCarrinho(id)
     } else {
-      novoArray = this.state.conteudoCarrinho.filter((item) => item.id != id)
-
+      this.deletarItemDoCarrinho(id)
     }
+  }
+
+  deletarItemDoCarrinho = (id) => {
+    const novoArray = this.state.conteudoCarrinho.filter((item) => item.id != id)
     this.setState({ conteudoCarrinho: novoArray })
   }
+
+  subtrairItemDoCarrinho = (id) => {
+    const novoArray = this.state.conteudoCarrinho.map((item) => {
+      if (item.id === id) {
+        return { ...item, count: item.count - 1 }
+      } else {
+        return item
+      }
+    })
+
+    this.setState({ conteudoCarrinho: novoArray })
+  }
+
   onChangeValor = (event) => {
     const valorProduto = event.target.value;
     const filtroValores = this.props.estoque.filter(
@@ -94,14 +101,14 @@ class App extends React.Component {
     });
   };
 
-  
+
   onChangeDecrescente = (event) => {
     this.setState({ decrescente: event.target.value });
   };
 
   OnChangeNomeProduto = (event) => {
     const nomeProduto = event.target.value;
-   
+
     const produtosFiltrados = this.props.estoque.filter((produto) =>
       produto.nome.toLocaleLowerCase().includes(nomeProduto.toLocaleLowerCase())
     );
@@ -112,42 +119,12 @@ class App extends React.Component {
 
   };
 
-  ordenaCrescente() {
-    this.state.produtos.sort((a, b) => {
-      if (a.preco > b.preco) {
-        return 1;
-      }
-      if (a.preco < b.preco) {
-        return -1;
-      }
-      
-      return 0;
-    });
+  setFinalizarCarrinho = () => {
+    this.setState({
+      conteudoCarrinho: [],
+      carrinhoFinalizado: true
+    })
   }
-
-  ordenaDecrescente() {
-    this.state.produtos.sort((a, b) => {
-      if (a.preco < b.preco) {
-        return 1;
-      }
-      if (a.preco > b.preco) {
-        return -1;
-      }
-      // a must be equal to b
-      return 0;
-    });
-  }
-
-  valorCarrinho = () => {
-    let valorTotal = 0
-    this.state.conteudoCarrinho.map((produto) => valorTotal =valorTotal + (produto.preco * produto.count))
-      return valorTotal
-    
-  }
-
-
-
-
 
   render() {
 
@@ -156,15 +133,20 @@ class App extends React.Component {
         <Header />
         <MainContainer>
           <Filtros
-          valorMinimo={this.state.alterarValorMin}
-          valorMaximo={this.state.alterarValorMax}
-          nomeProduto={this.state.alterarDescricao}
-          onChangeValor={this.onChangeValor}
-          OnChangeNomeProduto={this.OnChangeNomeProduto}
-        />
+            valorMinimo={this.state.alterarValorMin}
+            valorMaximo={this.state.alterarValorMax}
+            nomeProduto={this.state.alterarDescricao}
+            onChangeValor={this.onChangeValor}
+            OnChangeNomeProduto={this.OnChangeNomeProduto}
+          />
           <Produtos onClickProduto={this.onClickAdicionarCarrinho} />
 
-          <Carrinho conteudo={this.state.conteudoCarrinho} onClickDelete={this.onClickDelete} valorCarrinho={this.valorCarrinho}/>
+          <Carrinho
+            conteudo={this.state.conteudoCarrinho}
+            onClickDelete={this.onClickDelete}
+            setFinalizarCarrinho={this.setFinalizarCarrinho}
+            carrinhoFinalizado={this.state.carrinhoFinalizado}
+          />
 
         </MainContainer>
         <Footer />

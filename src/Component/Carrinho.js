@@ -22,20 +22,12 @@ const TituloCarrinho = styled.div`
   font-weight: bold;
   padding-bottom: 16px;
   color: #F5D5E0;
-                
-
   `
- 
-
-
 const ContainerSelecao = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    
+    align-items: center;  
     `
-
-
 const BotaoCarrinho = styled.button`
         text-align: center;
         color: #430D4B;
@@ -71,7 +63,6 @@ const BotaoExcluir = styled.button`
         border-radius: 50%;
         border:none;
         cursor: pointer;
-    
     `
 
 const Preco = styled.div`
@@ -90,37 +81,53 @@ const Total = styled.div`
   padding:16px 0;
   color: #F5D5E0;
 `
+const MensagemFinal = styled.div`
+    color: #F5D5E0;
+    text-align: center;
+    padding-bottom: 600px;
 
+`
 
 class Carrinho extends React.Component {
+
+    valorTotal = () => {
+        let valorTotal = 0
+        this.props.conteudo.map((produto) => valorTotal = valorTotal + (produto.preco * produto.count))
+        return valorTotal
+
+    }
 
     render() {
 
         return (
             <ContainerCarrinho>
                 <TituloCarrinho> Carrinho</TituloCarrinho>
-                <ContainerSelecao>
-                    {this.props.conteudo.map((produto) => (
-                        <ListaProdutos>
-                            <div>
-                                
-                                <Produto>{produto.count} X {produto.descricao} </Produto>
-                                <Preco>R$ {produto.preco} <BotaoExcluir onClick={() => this.props.onClickDelete(produto.id)}>X</BotaoExcluir></Preco> 
-                            </div>
 
-                        </ListaProdutos>
-                    ))}
-                </ContainerSelecao> 
-                
+                {this.props.carrinhoFinalizado ? (
+                    <MensagemFinal>Sua Compra foi Registrada, OBRIGADO!</MensagemFinal>
+                ) : (
+                    <>
+                        <ContainerSelecao>
+                            {this.props.conteudo.map((produto) => (
+                                <ListaProdutos>
+                                    <div>
 
-                        <Total>Total: R$ {this.props.valorCarrinho()},00</Total>
-                <BotaoCarrinho >Finalizar Compra</BotaoCarrinho>
+                                        <Produto>{produto.count} X {produto.descricao} </Produto>
+                                        <Preco>R$ {produto.preco} <BotaoExcluir onClick={() => this.props.onClickDelete(produto.id, produto.count)}>X</BotaoExcluir></Preco>
+                                    </div>
+
+                                </ListaProdutos>
+                            ))}
+                        </ContainerSelecao>
 
 
+                        <Total>Total: R$ {this.valorTotal()},00</Total>
+                        <BotaoCarrinho onClick={this.props.setFinalizarCarrinho}>Finalizar Compra</BotaoCarrinho>
+                    </>
+                )}
             </ContainerCarrinho>
         )
     }
-
 }
 
 export default Carrinho;

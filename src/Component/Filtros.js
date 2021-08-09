@@ -12,8 +12,7 @@ const ContainerFiltros = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-      
+    
 `
 const TituloFiltro = styled.div`
   margin-top: 24px;
@@ -23,8 +22,6 @@ const TituloFiltro = styled.div`
   letter-spacing:2px;
   font-weight: bold;
   padding-bottom: 16px;
-
-
 `
 const InputFiltros = styled.div`
   margin-top:24px;
@@ -64,7 +61,7 @@ class Filtros extends React.Component {
           </div>
           <div>
             <label>
-              Nome do Produto:
+              Busca por Produto:
               <InputStyled
                 value={this.props.descricao}
                 onChange={this.props.alterarDescricao} />

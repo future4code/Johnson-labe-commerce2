@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
-
 const CardProduto = styled.div`
-
 
     width: 190px;
     border: 3px solid #430D4B;
@@ -26,14 +23,13 @@ const CardProduto = styled.div`
         border: 1px solid #430D4B;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0,.6)
     } 
-
+  
 `
 const Titulo = styled.div`
     display: flex;
     justify-content: space-evenly;
     padding: 0 24px;
 `
-
 const ProdutosGrid = styled.div`
 
     margin-top: 16px;
@@ -41,14 +37,8 @@ const ProdutosGrid = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
     background-color: #210535;  
-    margin-bottom: 16px;
-    
-
-    
-
+    margin-bottom: 16px;    
 `
-
-
 const BotaoAdicionar = styled.button`
     text-align: center;
     color: #7B337D;
@@ -59,7 +49,14 @@ const BotaoAdicionar = styled.button`
     border: 1px solid #210535;
     cursor: pointer;
 `
-
+const Container = styled.div`
+    width: 100%;
+    height: 100%;
+    background-color: #210535;
+    padding-left: 26px;
+    color: #F5D5E0;
+  
+`
 
 const estoque = [
     {
@@ -132,26 +129,24 @@ const estoque = [
         descricao: "Satélite semi novo",
         preco: 250000.00
     }
-
-
-
 ]
-
-const Container = styled.div`
-    width: 100%;
-    height: 100%;
-    background-color: #210535;
-    padding-left: 26px;
-    color: #F5D5E0;
-  
-`
-
-
-
 
 class Produtos extends React.Component {
 
-    listaProdutos = () => estoque.map((produto, indice) => {
+    state = {
+        opcoesDeOrdem: [
+            'Padrao', 'Crescente', 'Decrescente'
+        ],
+        ordemSelecionada: 'Padrao'
+    }
+
+    mudarOrdem = (event) => {
+        this.setState({
+            ordemSelecionada: event.target.value
+        })
+    }
+
+    listaProdutos = () => this.produtosOrdenados().map((produto, indice) => {
         return (
             <CardProduto key="CardProduto">
                 <div key={indice}>
@@ -165,6 +160,19 @@ class Produtos extends React.Component {
 
     })
 
+    produtosOrdenados() {
+        const copia = [...estoque]
+        if (this.state.ordemSelecionada === 'Padrao') {
+            return copia
+        }
+        if (this.state.ordemSelecionada === 'Crescente') {
+            return copia.sort((a, b) => a.preco > b.preco ? 1 : -1);
+        }
+        if (this.state.ordemSelecionada === 'Decrescente') {
+            return copia.sort((a, b) => a.preco < b.preco ? 1 : -1);
+        }
+    }
+
     render() {
 
         return (
@@ -172,26 +180,27 @@ class Produtos extends React.Component {
                 <Titulo>
                     <h4>Quantidade de Produtos:{estoque.length}</h4>
                     <h4>Ordem:
-                        <select>
-                            <option value="0"></option>
-                            <option onClick={this.props.ordernaCrescente}>Crescente</option>
-                            <option onClick={this.props.ordernaDecrescente}>Decrescente</option>
+                        <select onChange={this.mudarOrdem}>
+                            {this.state.opcoesDeOrdem.map(opcao => (
+                                <option
+                                    key={opcao}
+                                    value={opcao}
+                                    selected={opcao === this.state.ordemSelecionada}
+                                >
+                                    {opcao}
+                                </option>
+                            ))}
                         </select>
                     </h4>
                 </Titulo>
                 <ProdutosGrid>
 
-
                     {this.listaProdutos()}
-
 
                 </ProdutosGrid>
             </Container>
-
-
         )
     }
-
 }
 
 export default Produtos;
